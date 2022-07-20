@@ -1,0 +1,17 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "code.frfole.frfoletweaks.mixin",
+  "plugin": "code.frfole.frfoletweaks.mixin.FTMixinConfig",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "TypeAccessor",
+    "datafixerupper.SchemasMixin",
+    "datafixerupper.ViewMixin"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
