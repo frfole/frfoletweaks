@@ -20,7 +20,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.junit.jupiter:junit-jupiter:5.8.2'
+    implementation 'org.junit.jupiter:junit-jupiter:5.9.0'
 
     // To change the versions see the gradle.properties file
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
@@ -29,7 +29,7 @@ dependencies {
 
     // Fabric API. This is technically optional, but you probably want it anyway.
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-    modImplementation "com.sk89q.worldedit:worldedit-fabric-mc1.18.2:${project.we_fabric_version}"
+    modImplementation "com.sk89q.worldedit:worldedit-fabric-mc1.19.2:${project.we_fabric_version}"
     shadow(implementation("de.swiesend:secret-service:1.7.0"))
 }
 

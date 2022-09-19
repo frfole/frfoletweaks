@@ -1,12 +1,10 @@
 package code.frfole.frfoletweaks.client;
 
-import code.frfole.frfoletweaks.FrfoleTweaks;
-import code.frfole.frfoletweaks.mixin.TypeAccessor;
-import code.frfole.frfoletweaks.util.ReadOnlyMap;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.fabricmc.fabric.api.client.command.v1.ClientCommandManager;
+import net.fabricmc.fabric.api.client.command.v2.ClientCommandManager;
+import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallback;
 import org.freedesktop.secret.simple.SimpleCollection;
 
 import java.io.IOException;
@@ -22,6 +20,8 @@ public class FrfoleTweaksClient implements ClientModInitializer {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        ClientCommandManager.DISPATCHER.register(ClientAuthCommand.register(ClientCommandManager.literal("clientauth")));
+        ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) -> {
+            dispatcher.register(ClientAuthCommand.register(ClientCommandManager.literal("clientauth")));
+        });
     }
 }

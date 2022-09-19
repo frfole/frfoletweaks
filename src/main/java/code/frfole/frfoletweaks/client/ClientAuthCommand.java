@@ -4,15 +4,15 @@ import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.context.CommandContext;
-import net.fabricmc.fabric.api.client.command.v1.FabricClientCommandSource;
+import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ServerInfo;
 import net.minecraft.text.Text;
 
 import java.util.Random;
 
-import static net.fabricmc.fabric.api.client.command.v1.ClientCommandManager.argument;
-import static net.fabricmc.fabric.api.client.command.v1.ClientCommandManager.literal;
+import static net.fabricmc.fabric.api.client.command.v2.ClientCommandManager.argument;
+import static net.fabricmc.fabric.api.client.command.v2.ClientCommandManager.literal;
 
 public final class ClientAuthCommand {
     public static LiteralArgumentBuilder<FabricClientCommandSource> register(LiteralArgumentBuilder<FabricClientCommandSource> builder) {
@@ -59,7 +59,7 @@ public final class ClientAuthCommand {
                                 + currentServerEntry.address;
                         String pass = StringArgumentType.getString(context, "pass");
                         FrfoleTweaksClient.simpleCollection.createItem(label, pass);
-                        context.getSource().getPlayer().sendChatMessage("/register " + pass + " " + pass);
+//                        context.getSource().getPlayer().sendCommand("/register " + pass + " " + pass);
                         context.getSource().sendFeedback(Text.of("You should be registered"));
                         return 0;
                     }
@@ -75,7 +75,7 @@ public final class ClientAuthCommand {
                                 + currentServerEntry.address;
                         String pass = genRandomString(IntegerArgumentType.getInteger(context, "len"));
                         FrfoleTweaksClient.simpleCollection.createItem(label, pass);
-                        context.getSource().getPlayer().sendChatMessage("/register " + pass + " " + pass);
+//                        context.getSource().getPlayer().sendCommand("/register " + pass + " " + pass);
                         context.getSource().sendFeedback(Text.of("You should be registered"));
                         return 0;
                     }
@@ -90,7 +90,7 @@ public final class ClientAuthCommand {
                 .findFirst()
                 .ifPresentOrElse(entry -> {
                     context.getSource().sendFeedback(Text.of("Password found, using"));
-                    context.getSource().getPlayer().sendChatMessage("/login " + new String(entry.getValue()));
+//                    context.getSource().getPlayer().sendCommand("/login " + new String(entry.getValue()));
                 }, () -> context.getSource().sendError(Text.of("Unable to find password matching " + name)));
         return 0;
     }
