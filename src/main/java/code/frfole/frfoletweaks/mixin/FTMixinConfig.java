@@ -1,6 +1,6 @@
 package code.frfole.frfoletweaks.mixin;
 
-import code.frfole.frfoletweaks.client.FrfoleTweaksClient;
+import code.frfole.frfoletweaks.FrfoleTweaks;
 import org.objectweb.asm.tree.ClassNode;
 import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
 import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
@@ -21,7 +21,7 @@ public class FTMixinConfig implements IMixinConfigPlugin {
 
     @Override
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
-        return !mixinClassName.contains("datafixerupper") || FrfoleTweaksClient.config.disableDFU();
+        return !mixinClassName.contains("datafixerupper") || FrfoleTweaks.CONFIG.disableDFU();
     }
 
     @Override

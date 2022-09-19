@@ -16,7 +16,7 @@ import java.util.function.Supplier;
 public final class FakeDataFixer implements com.mojang.datafixers.DataFixer {
     private static final class FakeSchema extends Schema {
         public FakeSchema() {
-            super(SharedConstants.getGameVersion().getWorldVersion(), null);
+            super(SharedConstants.getGameVersion().getSaveVersion().getId(), null);
         }
 
         @Override

@@ -1,6 +1,7 @@
 plugins {
     id 'fabric-loom' version '0.12-SNAPSHOT'
     id 'maven-publish'
+    id 'com.github.johnrengelman.shadow' version '7.1.2'
 }
 
 version = project.mod_version
@@ -29,6 +30,7 @@ dependencies {
     // Fabric API. This is technically optional, but you probably want it anyway.
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
     modImplementation "com.sk89q.worldedit:worldedit-fabric-mc1.18.2:${project.we_fabric_version}"
+    shadow(implementation("de.swiesend:secret-service:1.7.0"))
 }
 
 processResources {
@@ -89,4 +91,13 @@ publishing {
 
 test {
     useJUnitPlatform()
+}
+
+remapJar {
+    dependsOn(shadowJar)
+    input.set(shadowJar.archiveFile)
+}
+
+shadowJar {
+    configurations = [project.configurations.shadow]
 }

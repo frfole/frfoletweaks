@@ -28,6 +28,7 @@ public class FSchematicWriter implements ClipboardWriter {
         int sizeY = clipboard.getDimensions().getBlockY();
         int sizeZ = clipboard.getDimensions().getBlockZ();
         Object2IntArrayMap<String> palette = new Object2IntArrayMap<>();
+        palette.defaultReturnValue(-1);
         ArrayDeque<BlockEntry> queue = new ArrayDeque<>();
         int paletteSize = 0;
         int currentPaletteIndex = -1;
@@ -37,10 +38,8 @@ public class FSchematicWriter implements ClipboardWriter {
                 for (int y = 0; y < sizeY; y++) {
                     currentLen++;
                     String blockString = clipboard.getBlock(BlockVector3.at(x + offsetX, y + offsetY, z + offsetZ)).getAsString();
-                    int blockState;
-                    if (palette.containsKey(blockString)) {
-                        blockState = palette.getInt(blockString);
-                    } else {
+                    int blockState = palette.getInt(blockString);
+                    if (blockState == -1) {
                         blockState = paletteSize;
                         palette.put(blockString, blockState);
                         paletteSize++;
@@ -48,7 +47,7 @@ public class FSchematicWriter implements ClipboardWriter {
                     if (currentPaletteIndex == -1) {
                         currentPaletteIndex = blockState;
                     }
-                    if (blockState != currentPaletteIndex) {
+                    if (blockState != currentPaletteIndex || currentLen == Integer.MAX_VALUE) {
                         queue.add(new BlockEntry(currentPaletteIndex, currentLen - 1));
                         currentPaletteIndex = blockState;
                         currentLen = 1;
@@ -72,9 +71,17 @@ public class FSchematicWriter implements ClipboardWriter {
         stream.writeInt(queue.size());
         while (!queue.isEmpty()) {
             BlockEntry entry = queue.pollFirst();
-            stream.writeInt(entry.blockId());
-            stream.writeInt(entry.len());
+            writeVarInt(entry.blockId(), stream);
+            writeVarInt(entry.len(), stream);
         }
+    }
+
+    private void writeVarInt(int n, OutputStream stream) throws IOException {
+        while ((n & -128) != 0) {
+            stream.write(n & 127 | 128);
+            n >>>= 7;
+        }
+        stream.write(n);
     }
 
     @Override
