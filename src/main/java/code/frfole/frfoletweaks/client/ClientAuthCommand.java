@@ -59,7 +59,7 @@ public final class ClientAuthCommand {
                                 + currentServerEntry.address;
                         String pass = StringArgumentType.getString(context, "pass");
                         FrfoleTweaksClient.simpleCollection.createItem(label, pass);
-//                        context.getSource().getPlayer().sendCommand("/register " + pass + " " + pass);
+                        context.getSource().getPlayer().sendCommand("register " + pass + " " + pass);
                         context.getSource().sendFeedback(Text.of("You should be registered"));
                         return 0;
                     }
@@ -75,7 +75,7 @@ public final class ClientAuthCommand {
                                 + currentServerEntry.address;
                         String pass = genRandomString(IntegerArgumentType.getInteger(context, "len"));
                         FrfoleTweaksClient.simpleCollection.createItem(label, pass);
-//                        context.getSource().getPlayer().sendCommand("/register " + pass + " " + pass);
+                        context.getSource().getPlayer().sendCommand("register " + pass + " " + pass);
                         context.getSource().sendFeedback(Text.of("You should be registered"));
                         return 0;
                     }
@@ -90,7 +90,7 @@ public final class ClientAuthCommand {
                 .findFirst()
                 .ifPresentOrElse(entry -> {
                     context.getSource().sendFeedback(Text.of("Password found, using"));
-//                    context.getSource().getPlayer().sendCommand("/login " + new String(entry.getValue()));
+                    context.getSource().getPlayer().sendCommand("login " + new String(entry.getValue()));
                 }, () -> context.getSource().sendError(Text.of("Unable to find password matching " + name)));
         return 0;
     }
