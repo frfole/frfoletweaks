@@ -7,7 +7,9 @@
   "mixins": [
     "TypeAccessor",
     "datafixerupper.SchemasMixin",
-    "datafixerupper.ViewMixin"
+    "datafixerupper.ViewMixin",
+    "structureblock.StructureBlockEntityMixin",
+    "structureblock.UpdateStructureBlockMixin"
   ],
   "client": [
   ],

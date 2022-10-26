@@ -4,10 +4,8 @@
   "version": "${version}",
   "name": "FrfoleTweaks",
   "description": "",
-  "authors": [],
+  "authors": ["frfole"],
   "contact": {},
-  "license": "MIT",
-  "icon": "assets/FrfoleTweaks/icon.png",
   "environment": "client",
   "entrypoints": {
     "client": [

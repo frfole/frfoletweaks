@@ -1,6 +1,6 @@
 package code.frfole.frfoletweaks;
 
-import code.frfole.frfoletweaks.client.config.TweaksConfig;
+import code.frfole.frfoletweaks.config.TweaksConfig;
 import code.frfole.frfoletweaks.mixin.TypeAccessor;
 import code.frfole.frfoletweaks.util.ReadOnlyMap;
 import code.frfole.frfoletweaks.we.FSchematicFormat;

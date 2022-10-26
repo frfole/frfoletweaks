@@ -1,4 +1,4 @@
-package code.frfole.frfoletweaks.client.config;
+package code.frfole.frfoletweaks.config;
 
 public record TweaksConfig(boolean disableDFU, boolean enableFSchematic) {
 }

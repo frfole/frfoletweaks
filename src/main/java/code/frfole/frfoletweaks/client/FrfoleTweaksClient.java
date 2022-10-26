@@ -17,11 +17,11 @@ public class FrfoleTweaksClient implements ClientModInitializer {
     public void onInitializeClient() {
         try {
             simpleCollection = new SimpleCollection("minecraft", null);
+            ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) -> {
+                dispatcher.register(ClientAuthCommand.register(ClientCommandManager.literal("clientauth")));
+            });
         } catch (IOException e) {
             e.printStackTrace();
         }
-        ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) -> {
-            dispatcher.register(ClientAuthCommand.register(ClientCommandManager.literal("clientauth")));
-        });
     }
 }
