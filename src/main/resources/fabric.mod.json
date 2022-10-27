@@ -6,6 +6,7 @@
   "description": "",
   "authors": ["frfole"],
   "contact": {},
+  "license": "MIT",
   "environment": "client",
   "entrypoints": {
     "client": [

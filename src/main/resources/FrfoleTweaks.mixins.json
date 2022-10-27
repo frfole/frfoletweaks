@@ -12,6 +12,7 @@
     "structureblock.UpdateStructureBlockMixin"
   ],
   "client": [
+    "structureblock.StructureBlockEntityRenderer"
   ],
   "injectors": {
     "defaultRequire": 1
