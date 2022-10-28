@@ -22,12 +22,12 @@ public class FSchematicFormat implements ClipboardFormat {
     }
 
     @Override
-    public ClipboardReader getReader(InputStream inputStream) throws IOException {
+    public ClipboardReader getReader(InputStream inputStream) {
         return new FSchematicReader(inputStream);
     }
 
     @Override
-    public ClipboardWriter getWriter(OutputStream outputStream) throws IOException {
+    public ClipboardWriter getWriter(OutputStream outputStream) {
         return new FSchematicWriter(outputStream);
     }
 

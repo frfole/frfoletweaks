@@ -52,6 +52,7 @@ public class FSchematicReader implements ClipboardReader {
                 try {
                     state = WorldEdit.getInstance().getBlockFactory().parseFromInput(blockString, parserContext).toImmutableState();
                 } catch (InputParseException e) {
+                    assert BlockTypes.AIR != null;
                     state = BlockTypes.AIR.getDefaultState();
                 }
                 palette[paletteIndex] = state;

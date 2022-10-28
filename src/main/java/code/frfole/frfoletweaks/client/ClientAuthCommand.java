@@ -1,5 +1,6 @@
 package code.frfole.frfoletweaks.client;
 
+import com.mojang.brigadier.Command;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
@@ -92,7 +93,7 @@ public final class ClientAuthCommand {
                     context.getSource().sendFeedback(Text.of("Password found, using"));
                     context.getSource().getPlayer().sendCommand("login " + new String(entry.getValue()));
                 }, () -> context.getSource().sendError(Text.of("Unable to find password matching " + name)));
-        return 0;
+        return Command.SINGLE_SUCCESS;
     }
 
     private static final String RANDOM_STR_CHARS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";

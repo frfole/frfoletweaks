@@ -10,12 +10,8 @@ public class ReadOnlyMap<K, V> extends ConcurrentHashMap<K, V> {
         super();
     }
 
-    public ReadOnlyMap(@NotNull Map<? extends K, ? extends V> m) {
-        super(m);
-    }
-
     @Override
-    public V put(K key, V value) {
+    public V put(@NotNull K key, @NotNull V value) {
         return value;
     }
 }

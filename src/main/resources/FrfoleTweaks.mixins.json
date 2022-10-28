@@ -12,7 +12,8 @@
     "structureblock.UpdateStructureBlockMixin"
   ],
   "client": [
-    "structureblock.StructureBlockEntityRenderer"
+    "structureblock.StructureBlockEntityRenderer",
+    "structureblock.StructureBlockScreenAccessor"
   ],
   "injectors": {
     "defaultRequire": 1
