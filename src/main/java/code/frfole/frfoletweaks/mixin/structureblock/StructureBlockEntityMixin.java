@@ -1,6 +1,7 @@
 package code.frfole.frfoletweaks.mixin.structureblock;
 
 import code.frfole.frfoletweaks.FrfoleTweaks;
+import code.frfole.frfoletweaks.util.StructureBlockPos;
 import net.minecraft.block.entity.StructureBlockBlockEntity;
 import net.minecraft.util.math.BlockPos;
 import org.spongepowered.asm.mixin.Mixin;
@@ -15,7 +16,7 @@ public abstract class StructureBlockEntityMixin {
     public Stream<BlockPos> onStreamCornerPos(BlockPos start, BlockPos end) {
         return Stream.concat(
                 BlockPos.stream(start.add(60, 0, 60), end.add(-60, 0, -60)),
-                FrfoleTweaks.STRUCTURE_BLOCKS.stream()
+                FrfoleTweaks.STRUCTURE_BLOCKS.stream().map(StructureBlockPos::pos)
         );
     }
 

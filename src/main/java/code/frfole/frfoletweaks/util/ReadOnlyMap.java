@@ -2,7 +2,6 @@ package code.frfole.frfoletweaks.util;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class ReadOnlyMap<K, V> extends ConcurrentHashMap<K, V> {
